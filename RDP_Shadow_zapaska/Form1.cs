@@ -62,13 +62,8 @@ namespace RDP_Shadow_zapaska
             Process process = new Process();
             string serverName = serverComboBox.Text;
             string domainName = domainComboBox.Text;
-            string userName = "";
-            string password = "";
-            if (NamePassword.Checked)
-            {
-                userName = userNameTextBox.Text;
-                password = passwordTextBox.Text;
-            }
+            string userName = userNameTextBox.Text;
+            string password = passwordTextBox.Text;
             process.StartInfo.FileName = "query.exe";
             process.StartInfo.Arguments = $"session /server:{serverName}";
             process.StartInfo.RedirectStandardOutput = true;
@@ -190,7 +185,6 @@ namespace RDP_Shadow_zapaska
                 labelLogin.Enabled = false;
                 labelPassword.Enabled = false;
             }
-            
         }
     }
 }
