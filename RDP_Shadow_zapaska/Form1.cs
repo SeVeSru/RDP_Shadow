@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.DirectoryServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace RDP_Shadow_zapaska
 {
@@ -61,13 +62,20 @@ namespace RDP_Shadow_zapaska
             Process process = new Process();
             string serverName = serverComboBox.Text;
             string domainName = domainComboBox.Text;
+            string userName = "";
+            string password = "";
+            if (NamePassword.Checked)
+            {
+                userName = userNameTextBox.Text;
+                password = passwordTextBox.Text;
+            }
             process.StartInfo.FileName = "query.exe";
             process.StartInfo.Arguments = $"session /server:{serverName}";
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.Domain = Environment.UserDomainName;
-            process.StartInfo.UserName = "";
-            process.StartInfo.PasswordInClearText = "";
+            process.StartInfo.UserName = userName;
+            process.StartInfo.PasswordInClearText = password;
             process.StartInfo.CreateNoWindow = true;
             process.Start();
             string output = process.StandardOutput.ReadToEnd();
@@ -164,6 +172,25 @@ namespace RDP_Shadow_zapaska
             {
                 timer.Stop();
             }
+        }
+
+        private void NamePassword_CursorChanged(object sender, EventArgs e)
+        {
+            if (NamePassword.Checked)
+            {
+                userNameTextBox.Enabled = true;
+                passwordTextBox.Enabled = true;
+                labelLogin.Enabled = true;
+                labelPassword.Enabled = true;
+            }
+            else
+            {
+                userNameTextBox.Enabled = false;
+                passwordTextBox.Enabled = false;
+                labelLogin.Enabled = false;
+                labelPassword.Enabled = false;
+            }
+            
         }
     }
 }
