@@ -168,23 +168,5 @@ namespace RDP_Shadow_zapaska
                 timer.Stop();
             }
         }
-
-        private void NamePassword_CursorChanged(object sender, EventArgs e)
-        {
-            if (NamePassword.Checked)
-            {
-                userNameTextBox.Enabled = true;
-                passwordTextBox.Enabled = true;
-                labelLogin.Enabled = true;
-                labelPassword.Enabled = true;
-            }
-            else
-            {
-                userNameTextBox.Enabled = false;
-                passwordTextBox.Enabled = false;
-                labelLogin.Enabled = false;
-                labelPassword.Enabled = false;
-            }
-        }
     }
 }

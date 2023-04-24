@@ -40,11 +40,11 @@
             this.AutoUpdate = new System.Windows.Forms.CheckBox();
             this.checkControl = new System.Windows.Forms.CheckBox();
             this.checkRequest = new System.Windows.Forms.CheckBox();
-            this.NamePassword = new System.Windows.Forms.CheckBox();
             this.labelLogin = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // sessionListView
@@ -162,21 +162,9 @@
             this.checkRequest.Text = "Запрос подтверждения";
             this.checkRequest.UseVisualStyleBackColor = true;
             // 
-            // NamePassword
-            // 
-            this.NamePassword.AutoSize = true;
-            this.NamePassword.Location = new System.Drawing.Point(358, 170);
-            this.NamePassword.Name = "NamePassword";
-            this.NamePassword.Size = new System.Drawing.Size(168, 19);
-            this.NamePassword.TabIndex = 19;
-            this.NamePassword.Text = "Необходима авторизация";
-            this.NamePassword.UseVisualStyleBackColor = true;
-            this.NamePassword.CursorChanged += new System.EventHandler(this.NamePassword_CursorChanged);
-            // 
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Enabled = false;
             this.labelLogin.Location = new System.Drawing.Point(358, 198);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(41, 15);
@@ -186,7 +174,6 @@
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Enabled = false;
             this.labelPassword.Location = new System.Drawing.Point(358, 227);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(49, 15);
@@ -195,7 +182,6 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Enabled = false;
             this.passwordTextBox.Location = new System.Drawing.Point(411, 227);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(132, 23);
@@ -203,11 +189,18 @@
             // 
             // userNameTextBox
             // 
-            this.userNameTextBox.Enabled = false;
             this.userNameTextBox.Location = new System.Drawing.Point(411, 195);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(132, 23);
             this.userNameTextBox.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(376, 153);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 39);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Логин и пароль вводить по необходимости";
             // 
             // Form1
             // 
@@ -215,11 +208,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(555, 660);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelLogin);
-            this.Controls.Add(this.NamePassword);
             this.Controls.Add(this.checkRequest);
             this.Controls.Add(this.checkControl);
             this.Controls.Add(this.AutoUpdate);
@@ -252,10 +245,10 @@
         private CheckBox AutoUpdate;
         private CheckBox checkControl;
         private CheckBox checkRequest;
-        private CheckBox NamePassword;
         private Label labelLogin;
         private Label labelPassword;
         private TextBox passwordTextBox;
         private TextBox userNameTextBox;
+        private Label label1;
     }
 }
