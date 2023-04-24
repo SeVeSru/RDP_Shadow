@@ -38,6 +38,8 @@
             this.serverall = new System.Windows.Forms.Label();
             this.serverComboBox = new System.Windows.Forms.ComboBox();
             this.AutoUpdate = new System.Windows.Forms.CheckBox();
+            this.checkControl = new System.Windows.Forms.CheckBox();
+            this.checkRequest = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // sessionListView
@@ -73,7 +75,7 @@
             this.refreshButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.refreshButton.Location = new System.Drawing.Point(352, 629);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(307, 31);
+            this.refreshButton.Size = new System.Drawing.Size(203, 31);
             this.refreshButton.TabIndex = 10;
             this.refreshButton.Text = "Обновить (F5)";
             this.refreshButton.UseVisualStyleBackColor = true;
@@ -84,7 +86,7 @@
             this.shadowButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.shadowButton.Location = new System.Drawing.Point(352, 599);
             this.shadowButton.Name = "shadowButton";
-            this.shadowButton.Size = new System.Drawing.Size(307, 30);
+            this.shadowButton.Size = new System.Drawing.Size(203, 30);
             this.shadowButton.TabIndex = 11;
             this.shadowButton.Text = "Подключится";
             this.shadowButton.UseVisualStyleBackColor = true;
@@ -93,7 +95,7 @@
             // domainComboBox
             // 
             this.domainComboBox.FormattingEnabled = true;
-            this.domainComboBox.Location = new System.Drawing.Point(526, 12);
+            this.domainComboBox.Location = new System.Drawing.Point(411, 12);
             this.domainComboBox.Name = "domainComboBox";
             this.domainComboBox.Size = new System.Drawing.Size(121, 23);
             this.domainComboBox.TabIndex = 12;
@@ -101,7 +103,7 @@
             // domain
             // 
             this.domain.AutoSize = true;
-            this.domain.Location = new System.Drawing.Point(470, 15);
+            this.domain.Location = new System.Drawing.Point(358, 15);
             this.domain.Name = "domain";
             this.domain.Size = new System.Drawing.Size(47, 15);
             this.domain.TabIndex = 13;
@@ -110,7 +112,7 @@
             // serverall
             // 
             this.serverall.AutoSize = true;
-            this.serverall.Location = new System.Drawing.Point(470, 44);
+            this.serverall.Location = new System.Drawing.Point(358, 44);
             this.serverall.Name = "serverall";
             this.serverall.Size = new System.Drawing.Size(50, 15);
             this.serverall.TabIndex = 15;
@@ -119,7 +121,7 @@
             // serverComboBox
             // 
             this.serverComboBox.FormattingEnabled = true;
-            this.serverComboBox.Location = new System.Drawing.Point(526, 41);
+            this.serverComboBox.Location = new System.Drawing.Point(411, 41);
             this.serverComboBox.Name = "serverComboBox";
             this.serverComboBox.Size = new System.Drawing.Size(121, 23);
             this.serverComboBox.TabIndex = 14;
@@ -135,12 +137,34 @@
             this.AutoUpdate.UseVisualStyleBackColor = true;
             this.AutoUpdate.CheckedChanged += new System.EventHandler(this.AutoUpdate_CheckedChanged);
             // 
+            // checkControl
+            // 
+            this.checkControl.AutoSize = true;
+            this.checkControl.Location = new System.Drawing.Point(358, 95);
+            this.checkControl.Name = "checkControl";
+            this.checkControl.Size = new System.Drawing.Size(92, 19);
+            this.checkControl.TabIndex = 17;
+            this.checkControl.Text = "Управление";
+            this.checkControl.UseVisualStyleBackColor = true;
+            // 
+            // checkRequest
+            // 
+            this.checkRequest.AutoSize = true;
+            this.checkRequest.Location = new System.Drawing.Point(358, 70);
+            this.checkRequest.Name = "checkRequest";
+            this.checkRequest.Size = new System.Drawing.Size(154, 19);
+            this.checkRequest.TabIndex = 18;
+            this.checkRequest.Text = "Запрос подтверждения";
+            this.checkRequest.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(659, 660);
+            this.ClientSize = new System.Drawing.Size(555, 660);
+            this.Controls.Add(this.checkRequest);
+            this.Controls.Add(this.checkControl);
             this.Controls.Add(this.AutoUpdate);
             this.Controls.Add(this.serverall);
             this.Controls.Add(this.serverComboBox);
@@ -169,5 +193,7 @@
         private Label serverall;
         private ComboBox serverComboBox;
         private CheckBox AutoUpdate;
+        private CheckBox checkControl;
+        private CheckBox checkRequest;
     }
 }

@@ -122,9 +122,18 @@ namespace RDP_Shadow_zapaska
                 int sessionId = int.Parse(sessionListView.SelectedItems[0].SubItems[1].Text);
                 Process process = new Process();
                 process.StartInfo.FileName = "mstsc.exe";
+                string Options = "";
+                if (!checkRequest.Checked)
+                {
+                    Options = Options + "/noConsentPrompt ";
+                }
+                if (checkControl.Checked)
+                {
+                    Options = Options + "/control ";
+                }
                 // Start mstsc and shadow the selected session
 
-                    process.StartInfo.Arguments = $"/shadow:{sessionId} /v:{serverComboBox.Text} /noConsentPrompt /control";
+                process.StartInfo.Arguments = $"/shadow:{sessionId} /v:{serverComboBox.Text} {Options}";
 
                 process.Start();
             }
