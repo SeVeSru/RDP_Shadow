@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Diagnostics;
 using System.DirectoryServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -72,9 +73,27 @@ namespace RDP_Shadow_zapaska
             process.StartInfo.UserName = userName;
             process.StartInfo.PasswordInClearText = password;
             process.StartInfo.CreateNoWindow = true;
-            process.Start();
-            string output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
+            string output = "";
+            try
+            {
+                process.Start();
+                bool processExited = process.WaitForExit(10000); // ожидание 10 секунд
+                if (processExited)
+                {
+                    output = process.StandardOutput.ReadToEnd();
+                }
+                else
+                {
+                    process.Kill(); // Убивает процесс
+                    output = "The process has timed out and been terminated.";
+                }
+            }
+            catch (Win32Exception)
+            {
+                MessageBox.Show("Проверьте логин или пароль", "Неверный логин или пароль", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                process.Close();
+            }
+
 
             // Обновляем или добавляем элементы списка
             string[] lines = output.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
