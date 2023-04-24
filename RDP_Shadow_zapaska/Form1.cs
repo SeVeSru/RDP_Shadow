@@ -5,8 +5,6 @@ namespace RDP_Shadow_zapaska
 {
     public partial class Form1 : Form
     {
-        string server = "RDP1";
-
         public Form1()
         {
             InitializeComponent();
@@ -18,6 +16,15 @@ namespace RDP_Shadow_zapaska
 
             // Populate session list view
             RefreshSessionList();
+
+            // Создаем таймер System.Windows.Forms.Timer
+            var timer = new System.Windows.Forms.Timer();
+
+            // Устанавливаем интервал таймера в 1 минуту
+            timer.Interval = 5000;
+
+            // Добавляем обработчик события Tick
+            timer.Tick += refreshButton_Click_1;
         }
 
         private void LDAP_server()
@@ -142,23 +149,22 @@ namespace RDP_Shadow_zapaska
 
         private void AutoUpdate_CheckedChanged(object sender, EventArgs e)
         {
+            // Создаем таймер System.Windows.Forms.Timer
+            var timer = new System.Windows.Forms.Timer();
+
+            // Устанавливаем интервал таймера в 1 минуту
+            timer.Interval = 5000;
+
+            // Добавляем обработчик события Tick
+            timer.Tick += refreshButton_Click_1;
+
             if (AutoUpdate.Checked)
             {
-                // Создаем таймер System.Windows.Forms.Timer
-                var timer = new System.Windows.Forms.Timer();
-
-                // Устанавливаем интервал таймера в 1 минуту
-                timer.Interval = 5000;
-
-                // Добавляем обработчик события Tick
-                timer.Tick += refreshButton_Click_1;
-
                 // Запускаем таймер
                 timer.Start();
             }
             else
             {
-                var timer = new System.Windows.Forms.Timer();
                 timer.Stop();
             }
         }

@@ -133,6 +133,7 @@
             this.AutoUpdate.TabIndex = 16;
             this.AutoUpdate.Text = "Автообновление";
             this.AutoUpdate.UseVisualStyleBackColor = true;
+            this.AutoUpdate.CheckedChanged += new System.EventHandler(this.AutoUpdate_CheckedChanged);
             // 
             // Form1
             // 
