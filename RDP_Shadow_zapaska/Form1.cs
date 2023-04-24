@@ -19,10 +19,7 @@ namespace RDP_Shadow_zapaska
             // Populate session list view
             RefreshSessionList();
 
-            // Создаем таймер System.Windows.Forms.Timer
-            var timer = new System.Windows.Forms.Timer();
-
-            // Устанавливаем интервал таймера в 1 минуту
+            // Устанавливаем интервал таймера в милисекундах
             timer.Interval = 5000;
 
             // Добавляем обработчик события Tick
@@ -31,7 +28,6 @@ namespace RDP_Shadow_zapaska
 
         private void LDAP_server()
         {
-
             DirectoryEntry entry = new DirectoryEntry("LDAP://DC=" + domainComboBox.Text + ",DC=loc"); // замените на свой адрес сервера AD
             DirectorySearcher searcher = new DirectorySearcher(entry);
             searcher.Filter = "(&(objectClass=computer)(name=*))"; // фильтр поиска на компьютеры
