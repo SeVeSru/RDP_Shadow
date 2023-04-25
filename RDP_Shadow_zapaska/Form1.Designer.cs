@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ColumnHeader Username;
+            System.Windows.Forms.ColumnHeader columnHeader1;
             this.sessionListView = new System.Windows.Forms.ListView();
-            this.Username = new System.Windows.Forms.ColumnHeader();
             this.SessionID = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.refreshButton = new System.Windows.Forms.Button();
             this.shadowButton = new System.Windows.Forms.Button();
             this.domainComboBox = new System.Windows.Forms.ComboBox();
@@ -45,42 +47,57 @@
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            Username = new System.Windows.Forms.ColumnHeader();
+            columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
+            // 
+            // Username
+            // 
+            Username.DisplayIndex = 1;
+            Username.Text = "Имя пользователя";
+            Username.Width = 100;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Активность";
+            columnHeader1.Width = 0;
             // 
             // sessionListView
             // 
             this.sessionListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Username,
-            this.SessionID});
+            Username,
+            this.SessionID,
+            columnHeader1,
+            this.columnHeader2});
             this.sessionListView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sessionListView.FullRowSelect = true;
             this.sessionListView.Location = new System.Drawing.Point(0, 0);
             this.sessionListView.Name = "sessionListView";
-            this.sessionListView.Size = new System.Drawing.Size(352, 660);
+            this.sessionListView.Size = new System.Drawing.Size(352, 641);
             this.sessionListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.sessionListView.TabIndex = 9;
             this.sessionListView.UseCompatibleStateImageBehavior = false;
             this.sessionListView.View = System.Windows.Forms.View.Details;
             this.sessionListView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.sessionListView_MouseDoubleClick);
             // 
-            // Username
-            // 
-            this.Username.DisplayIndex = 1;
-            this.Username.Text = "Имя пользователя";
-            this.Username.Width = 100;
-            // 
             // SessionID
             // 
             this.SessionID.DisplayIndex = 0;
             this.SessionID.Text = "ID";
-            this.SessionID.Width = 100;
+            this.SessionID.Width = 0;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "ФИО";
+            this.columnHeader2.Width = 250;
             // 
             // refreshButton
             // 
             this.refreshButton.AutoSize = true;
             this.refreshButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.refreshButton.Location = new System.Drawing.Point(352, 629);
+            this.refreshButton.Location = new System.Drawing.Point(352, 610);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(203, 31);
+            this.refreshButton.Size = new System.Drawing.Size(250, 31);
             this.refreshButton.TabIndex = 10;
             this.refreshButton.Text = "Обновить (F5)";
             this.refreshButton.UseVisualStyleBackColor = true;
@@ -89,9 +106,9 @@
             // shadowButton
             // 
             this.shadowButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.shadowButton.Location = new System.Drawing.Point(352, 599);
+            this.shadowButton.Location = new System.Drawing.Point(352, 580);
             this.shadowButton.Name = "shadowButton";
-            this.shadowButton.Size = new System.Drawing.Size(203, 30);
+            this.shadowButton.Size = new System.Drawing.Size(250, 30);
             this.shadowButton.TabIndex = 11;
             this.shadowButton.Text = "Подключится";
             this.shadowButton.UseVisualStyleBackColor = true;
@@ -134,9 +151,10 @@
             // AutoUpdate
             // 
             this.AutoUpdate.AutoSize = true;
-            this.AutoUpdate.Location = new System.Drawing.Point(358, 574);
+            this.AutoUpdate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AutoUpdate.Location = new System.Drawing.Point(352, 561);
             this.AutoUpdate.Name = "AutoUpdate";
-            this.AutoUpdate.Size = new System.Drawing.Size(119, 19);
+            this.AutoUpdate.Size = new System.Drawing.Size(250, 19);
             this.AutoUpdate.TabIndex = 16;
             this.AutoUpdate.Text = "Автообновление";
             this.AutoUpdate.UseVisualStyleBackColor = true;
@@ -207,7 +225,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(555, 660);
+            this.ClientSize = new System.Drawing.Size(602, 641);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.passwordTextBox);
@@ -250,5 +268,7 @@
         private TextBox passwordTextBox;
         private TextBox userNameTextBox;
         private Label label1;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
     }
 }

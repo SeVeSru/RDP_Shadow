@@ -28,6 +28,27 @@ namespace RDP_Shadow_zapaska
             timer.Tick += refreshButton_Click_1;
         }
 
+        private string GetFullNameByLogin(string login)
+        {
+            using (var entry = new DirectoryEntry($"LDAP://{Environment.UserDomainName}"))
+            {
+                using (var search = new DirectorySearcher(entry))
+                {
+                    search.Filter = $"(&(objectClass=user)(sAMAccountName={login}))";
+                    search.PropertiesToLoad.Add("displayName");
+                    var result = search.FindOne();
+                    if (result != null)
+                    {
+                        return result.Properties["displayName"][0].ToString();
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+            }
+        }
+
         private void LDAP_server()
         {
             DirectoryEntry entry = new DirectoryEntry("LDAP://DC=" + domainComboBox.Text + ",DC=loc"); // замените на свой адрес сервера AD
@@ -57,7 +78,10 @@ namespace RDP_Shadow_zapaska
             var sessionDict = new Dictionary<string, ListViewItem>();
             foreach (ListViewItem item in sessionListView.Items)
             {
-                sessionDict[item.SubItems[1].Text] = item;
+                if (item.SubItems.Count >= 2)
+                {
+                    sessionDict[item.SubItems[1].Text] = item;
+                }
             }
 
             Process process = new Process();
@@ -85,7 +109,7 @@ namespace RDP_Shadow_zapaska
                 else
                 {
                     process.Kill(); // Убивает процесс
-                    output = "The process has timed out and been terminated.";
+                    MessageBox.Show("Сервер не отвечает", "Сервер не отвечает", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Win32Exception)
@@ -118,6 +142,12 @@ namespace RDP_Shadow_zapaska
                         item.SubItems.Add(sessionId);
                         item.SubItems.Add(fields[3]);
                         sessionListView.Items.Add(item);
+
+                        // Получаем ФИО пользователя и добавляем его в колонку списка
+                        string login = fields[1].Substring(fields[1].IndexOf("\\") + 1);
+                        string fullName = GetFullNameByLogin(login);
+                        item.SubItems.Add(fullName);
+
                     }
                     // Удаляем сессию из словаря, чтобы в конце остались только удаленные сессии
                     sessionDict.Remove(sessionId);
